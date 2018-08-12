@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FamilyPhotos.Models.PhotoModel>
+<div class="page-header">
+<h2>Fényképek Listája</h2>
+</div>
+@foreach (var photo in Model)
+{
+        <li class="list-group-item">
+            <div class="media">
+                <div class="media-left media-middle">
+                    @if (photo.Picture != null)
+                     {
+                        <img src="@Url.Action("GetImage", new { photoId = photo.Id })" class="media-object" width="200"/>
+                    }
+                </div>
+            
+        
+                <div class="media-body">
+                    <h4 class=" media-heading">@photo.Name</h4>
+                    <div>@photo.Company</div>
+                    <div>@photo.FaceBookProfil</div>
+                    <div>@photo.Description</div>
+                    @Html.ActionLink("MEgtekintés", "Details", new { id = photo.Id }, htmlAttributes: new { @class = "btn btn-success" })
+                    @Html.ActionLink("Modositás", "Edit", new { id = photo.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Törlés", "Delete", new { id = photo.Id }, htmlAttributes: new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </li>
+}
+    <div>
+
+        @Html.ActionLink("Új photo létrehozása", "Create", null, htmlAttributes: new { @class = "btn btn-danger" })
+    </div>
+<div class="row">
+    <button class="btn-danger col-xs-offset-2" id="tesztgomb">Teszt</button>
+</div>
+
+
+    @section style{
+        <style type="text/css">
+            body {
+                background-color: azure;
+            }
+        </style>
+    }
+    @section  script{ 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#tesztgomb").click(function () {
+                    alert("Megnyomtad a tesztgombot");
+
+                });
+
+             });
+        </script>
+    }
