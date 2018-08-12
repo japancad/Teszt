@@ -9,10 +9,22 @@ namespace FamilyPhotosWithIdentity.Models
 {
     public class ApplicationRole : IdentityRole
     {
-        public ApplicationRole()
+        public ApplicationRole() : base()
         {
-            UrlCode = Guid.NewGuid().ToString(); 
+            Init();
         }
+
+        public ApplicationRole(string roleName) : base(roleName)
+        {
+            Init();
+        }
+
+        private void Init()
+        {
+            UrlCode = Guid.NewGuid().ToString();
+        }
+
+
         [StringLength(100)]
         public string UrlCode { get; set; }
 

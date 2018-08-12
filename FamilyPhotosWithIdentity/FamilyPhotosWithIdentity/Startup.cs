@@ -29,7 +29,7 @@ namespace FamilyPhotosWithIdentity
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
                 options.Password.RequireNonAlphanumeric = false; // password policy modositása
             })
@@ -40,6 +40,13 @@ namespace FamilyPhotosWithIdentity
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            services.AddAuthorization( options => 
+            {
+                options.AddPolicy("RequiredElevatesdAdminRights",
+                    policy => policy.RequireRole("Administrators"));
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
