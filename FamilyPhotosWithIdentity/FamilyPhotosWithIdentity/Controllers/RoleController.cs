@@ -26,14 +26,16 @@ namespace FamilyPhotosWithIdentity.Controllers
 
         public IActionResult Index()
         {
-            var roles = roleManager.Roles.ToList();
+            //var roles = roleManager.Roles.ToList();  //Api miatt nincs rá szükség
             var vm = new List<RoleViewModel>();
 
             //TODO: automapper intézni
-            foreach (var role in roles)
-            {
-                vm.Add(new RoleViewModel { UrlCode = role.UrlCode, Name = role.Name });
-            }
+
+            //Erre sincs Szukseg Api miatt
+            //foreach (var role in roles)
+            //{
+            //    vm.Add(new RoleViewModel { UrlCode = role.UrlCode, Name = role.Name });
+            //}
 
             return View(vm);
         }

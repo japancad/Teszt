@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FamilyPhotosWithIdentity.Data;
 using FamilyPhotosWithIdentity.Models;
 using FamilyPhotosWithIdentity.Services;
+using DataTables.AspNet.AspNetCore;
 
 namespace FamilyPhotosWithIdentity
 {
@@ -40,6 +41,8 @@ namespace FamilyPhotosWithIdentity
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            services.RegisterDataTables();
 
             services.AddAuthorization( options => 
             {
