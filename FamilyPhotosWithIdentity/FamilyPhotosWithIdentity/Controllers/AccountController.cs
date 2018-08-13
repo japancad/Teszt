@@ -37,17 +37,35 @@ namespace FamilyPhotosWithIdentity.Controllers
             _logger = logger;
         }
 
+        //Eredeti
+        //[HttpGet]
+        //public IActionResult AccessDenied()
+        //{
+        //    return View();
+        //}
+
+        [AllowAnonymous]
+        public IActionResult AccessDenied(string returnUrl = null)
+        {
+            return RedirectToAction(nameof(Login), new
+                    {
+                        returnUrl = returnUrl,
+                        message = $"You Must by in the Administrator role to Access this page : {returnUrl}"
+                    });
+        }
+
         [TempData]
         public string ErrorMessage { get; set; }
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(string returnUrl = null)
+        public async Task<IActionResult> Login(string returnUrl = null, string message = null)
         {
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
+            ViewData["Message"] = message;
             return View();
         }
 
@@ -431,11 +449,7 @@ namespace FamilyPhotosWithIdentity.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
+        
 
         #region Helpers
 

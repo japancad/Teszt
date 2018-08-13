@@ -45,7 +45,7 @@ namespace FamilyPhotosWithIdentity.Controllers.api
                                         ? vm
                                         : vm.Where(x => x.Name.Contains(request.Search.Value))
                                             .ToList();
-
+            //Lapozas müködés
             var vmPage = filteredVm.Skip(request.Start).Take(request.Length);
 
             //Elökésület DataTables válaszra
