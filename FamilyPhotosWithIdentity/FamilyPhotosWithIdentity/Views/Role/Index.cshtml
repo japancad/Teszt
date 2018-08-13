@@ -6,10 +6,10 @@
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     <a asp-action="Create" class="btn btn-default">Create New</a>
-</p>
-<table class="table" id="tbl_roles">
+</p>*@
+<table class="table display" id="tbl_roles">
     <thead>
         <tr>
                 
@@ -68,6 +68,8 @@
                         {
                             data: "urlCode",
                             render: function (data) {
+                                @*return "<a href=\"@Url.Action("Edit", "Role")?urlCode=" + data + "\" class=\"btn btn-default\">Edit</a>" + 
+                                    "<a href=\"@Url.Action("Delete", "Role")?urlCode=" + data + "\" class=\"btn btn-danger\">Delete</a>";*@
                                 return "<a href=\"@Url.Action("Edit", "Role")?urlCode=" + data + "\" class=\"btn btn-default\">Edit</a>" + 
                                        "<a href=\"@Url.Action("Delete", "Role")?urlCode=" + data + "\" class=\"btn btn-danger\">Delete</a>";
                             }
