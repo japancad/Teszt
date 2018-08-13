@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="tbl_roles">
     <thead>
         <tr>
                 
@@ -20,18 +20,37 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { urlCode = item.UrlCode }) |
-                
-                @Html.ActionLink("Delete", "Delete", new { urlCode = item.UrlCode })
-            </td>
-        </tr>
-}
+        @*@foreach (var item in Model) {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { urlCode = item.UrlCode }) |
+
+                        @Html.ActionLink("Delete", "Delete", new { urlCode = item.UrlCode })
+                    </td>
+                </tr>
+        }*@
     </tbody>
 </table>
+
+@section styles {
+        <link rel="stylesheet" type="text/css" href="~/lib/DataTables/css/jquery.dataTables.css" />
+        <link rel="stylesheet" type="text/css" href="~/lib/DataTables/css/dataTables.bootstrap.css" />
+    }
+
+@section Scripts {
+        <script src="~/lib/DataTables/js/jquery.dataTables.js"></script>
+        <script src="~/lib/DataTables/js/dataTables.bootstrap.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#tbl_roles").DataTable()
+
+            });
+
+
+        </script>
+}
