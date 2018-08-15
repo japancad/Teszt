@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace FamilyPhotosWithIdentity.Models.Github
 {
-    public class Config
+
+    public class Label
     {
-        
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
-        public string content_type { get; set; }
-        public string insecure_ssl { get; set; }
+        public string node_id { get; set; }
         public string url { get; set; }
+        public string name { get; set; }
+        public string color { get; set; }
+        public bool _default { get; set; }
     }
+
 }

@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using FamilyPhotosWithIdentity.Models;
+using FamilyPhotosWithIdentity.Models.Github;
 
 namespace FamilyPhotosWithIdentity.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser,ApplicationRole,string>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        {
-            
-        }
+        { }
+        //model hozzáadása ef hez hogy kezelje az adatbázisban
+        public DbSet<GithubRequest> GithubRequests {get;set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

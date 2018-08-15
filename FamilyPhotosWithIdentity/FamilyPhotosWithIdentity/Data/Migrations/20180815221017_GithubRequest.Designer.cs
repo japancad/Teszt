@@ -11,9 +11,10 @@ using System;
 namespace FamilyPhotosWithIdentity.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180815221017_GithubRequest")]
+    partial class GithubRequest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,7 +152,8 @@ namespace FamilyPhotosWithIdentity.Data.Migrations
 
             modelBuilder.Entity("FamilyPhotosWithIdentity.Models.Github.Hook", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("EventsInDb");
 
@@ -186,7 +188,8 @@ namespace FamilyPhotosWithIdentity.Data.Migrations
 
             modelBuilder.Entity("FamilyPhotosWithIdentity.Models.Github.Issue", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("assigneeid");
 
@@ -241,7 +244,8 @@ namespace FamilyPhotosWithIdentity.Data.Migrations
 
             modelBuilder.Entity("FamilyPhotosWithIdentity.Models.Github.Label", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("Issueid");
 
@@ -280,7 +284,8 @@ namespace FamilyPhotosWithIdentity.Data.Migrations
 
             modelBuilder.Entity("FamilyPhotosWithIdentity.Models.Github.Milestone", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("creatorid");
 
@@ -307,7 +312,8 @@ namespace FamilyPhotosWithIdentity.Data.Migrations
 
             modelBuilder.Entity("FamilyPhotosWithIdentity.Models.Github.Repository", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<bool>("_private");
 
@@ -460,7 +466,8 @@ namespace FamilyPhotosWithIdentity.Data.Migrations
 
             modelBuilder.Entity("FamilyPhotosWithIdentity.Models.Github.Sender", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("avatar_url");
 
@@ -503,7 +510,8 @@ namespace FamilyPhotosWithIdentity.Data.Migrations
 
             modelBuilder.Entity("FamilyPhotosWithIdentity.Models.Github.User", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("Issueid");
 

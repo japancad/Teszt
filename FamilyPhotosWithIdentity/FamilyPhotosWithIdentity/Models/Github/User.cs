@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace FamilyPhotosWithIdentity.Models.Github
     public class User
     {
         public string login { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
         public string node_id { get; set; }
         public string avatar_url { get; set; }

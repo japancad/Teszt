@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace FamilyPhotosWithIdentity.Models.Github
 {
-
-    public class Owner
+    public class Creator
     {
         public string login { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

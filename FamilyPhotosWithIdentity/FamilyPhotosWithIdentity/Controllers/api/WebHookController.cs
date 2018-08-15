@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FamilyPhotosWithIdentity.Data;
 using FamilyPhotosWithIdentity.Models.Github;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,17 @@ namespace FamilyPhotosWithIdentity.Controllers.api
     
     public class WebHookController : Controller
     {
+
+        //atveszük ef-et contextjet
+        private readonly ApplicationDbContext db;
+
+        public WebHookController(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
+        //Ideig tart az átvétel 
+
+
         [HttpPost]
         public IActionResult Post()
         {
@@ -40,6 +52,12 @@ namespace FamilyPhotosWithIdentity.Controllers.api
             if (payload != null)
             {
                 var request = JsonConvert.DeserializeObject<GithubRequest>(payload);
+                if (request != null)
+                {
+                    //Hozzáadás adatbázishoz
+                    db.GithubRequests.Add(request);
+                    db.SaveChanges();
+                }
             }
 
             return Ok();
